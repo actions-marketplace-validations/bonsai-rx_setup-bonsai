@@ -19,7 +19,7 @@ outputs:
   cache-hit:
     description: "`none` if there was not a cache hit, `partial` if a partially compatible cache was hit, `full` if an exact cache was hit."
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/main.js'
   post: 'dist/post.js'
   post-if: success()
