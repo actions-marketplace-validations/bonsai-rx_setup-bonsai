@@ -12,7 +12,7 @@ Basic usage is to simply invoke the action to install bootstrap the `.bonsai` en
 
 ```yml
 - name: Set up Bonsai environment
-  uses: bonsai-rx/setup-bonsai@v1
+  uses: bonsai-rx/setup-bonsai@v2
 ```
 
 ### Specifying the environment(s) to restore
@@ -21,7 +21,7 @@ You can specify the one or more Bonsai environments to restore using the `enviro
 
 ```yml
 - name: Set up Bonsai environments
-  uses: bonsai-rx/setup-bonsai@v1
+  uses: bonsai-rx/setup-bonsai@v2
   with:
     environment-paths: |
       .bonsai/
@@ -36,7 +36,7 @@ This example restores all environments across the entire repo:
 
 ```yml
 - name: Set up Bonsai environments
-  uses: bonsai-rx/setup-bonsai@v1
+  uses: bonsai-rx/setup-bonsai@v2
   with:
     environment-paths: **/.bonsai/
 ```
@@ -53,10 +53,12 @@ You can inject one or more `.nupkg` files into your Bonsai environment using the
     path: artifacts/packages/
 
 - name: Set up Bonsai environment
-  uses: bonsai-rx/setup-bonsai@v1
+  uses: bonsai-rx/setup-bonsai@v2
   with:
     inject-packages: artifacts/packages/*.nupkg
 ```
+
+An environment that depends on one of the injected packages can be bootstrapped even when that package is not yet published. The initial bootstrap is allowed to fail and is then completed by the injection step, which supports co-developing an examples repository alongside unreleased packages.
 
 Injected packages (and their dependencies not already present in `Bonsai.config`) are excluded from the package cache to avoid any cache poisoning issues.
 

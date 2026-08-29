@@ -48,7 +48,7 @@ export enum Outputs {
 }
 
 export const invocationId = (() => {
-    // This initializer will be evlauated before anything else so this is implicitly a good palce to do this
+    // This initializer will be evaluated before anything else so this is implicitly a good place to do this
     if (actionIsUnderTest) {
         loadState();
     }
